@@ -1,0 +1,19 @@
+/* 
+    Document   : application
+    Created on : 21.9.2013, 0:23:15
+    Author     : ondro
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+body {
+    -moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;
+}
+
+.card-widget {
+    
+}
+
+.clickable {
+    cursor: pointer;
+}

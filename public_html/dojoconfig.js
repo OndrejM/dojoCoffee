@@ -1,12 +1,25 @@
-(function(window) {
-    window.dojoConfig = {
+(function(global) {
+    global.dojoConfig = {
         async: 1,
         packages: [
             {
                 name: 'app',
                 location: localBase() + 'js/app'
+            },{
+                name: 'cards',
+                location: localBase() + 'js/cards'
+            },{
+                name: 'widgets',
+                location: localBase() + 'js/widgets'
+            },{
+                name: 'widgets/common',
+                location: localBase() + 'js/widgets/common'
             }
-        ]
+        ],
+        'environment': 'dev',
+        isDev : function() {
+            return this.environment === "dev";
+        }
     };
 
     /* To build path to local package when not relative to dojo.js file.

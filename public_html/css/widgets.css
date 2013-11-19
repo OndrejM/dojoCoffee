@@ -1,0 +1,48 @@
+/* 
+    Document   : components
+    Created on : 20.9.2013, 23:30:34
+    Author     : ondro
+    Description:
+        Style components marked by css class, like .panel
+*/
+
+/**** Panel ****/
+
+/*layout*/
+.panel { 
+    border: 0.1em solid;
+    padding: 0.2em;
+    margin: 0.2em;
+    display: inline-block;
+
+    -moz-box-shadow: 0 0 0.25em #b2d1ff;
+    -webkit-box-shadow: 0 0 0.25em #b2d1ff;
+    box-shadow: 0 0 0.25em #b2d1ff;
+
+    -moz-border-radius: 0.3em;
+    -webkit-border-radius: 0.3em;
+    border-radius: 0.3em;
+}
+
+/*colors*/
+
+/*default color*/
+.panel {
+    border-color: #cccccc;
+    background-color: #efefef;
+    color: #666666;
+}
+
+/*in blue*/
+.panel.blue {
+    border-color: #b2d1ff;
+    background-color: #f3f3ff;
+    color: #006dba;
+}
+
+/*in red*/
+.panel.red {
+    background-color: #fff3f3;
+    border-color: #ffaaaa;
+    color: #cc0000;
+}
