@@ -9,9 +9,13 @@
     </head>
     <body>
         <script type="dojo/require">at: "dojox/mvc/at"</script>
-
-        <div id="card" data-dojo-type="widgets/Card" data-dojo-props="content: at(model.displayedCard, 'text')">
-            Loading cards...
+        <div data-dojo-type="dijit/_WidgetBase" data-dojo-props="target: at(model)">
+            <div id="card" data-dojo-type="widgets/Card" data-dojo-props="content: at('rel:displayedCard', 'text')">
+                
+            </div>
+            <div id="cardCopy" data-dojo-type="widgets/Card" data-dojo-props="content: at('rel:displayedCard', 'text')">
+                
+            </div>
         </div>
 
         <script src="dojoconfig.js" type="text/javascript"></script>
@@ -19,7 +23,14 @@
         src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js" type="text/javascript"></script>
 
         <script type="text/javascript">
-            require(["cards/main"]);
+            require(["cards/main"], function(CardsMain) {
+                var cardsMain = new CardsMain();
+                this.model = cardsMain.model;
+                cardsMain.start(function () {
+                    cardsMain.initCard('#card');
+                    cardsMain.initCard('#cardCopy');
+                })
+            });
         </script>
     </body>
 </html>
