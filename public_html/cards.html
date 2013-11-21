@@ -9,12 +9,17 @@
     </head>
     <body>
         <script type="dojo/require">at: "dojox/mvc/at"</script>
-        <div data-dojo-type="dijit/_WidgetBase" data-dojo-props="target: at(model)">
-            <div id="card" data-dojo-type="widgets/Card" data-dojo-props="content: at('rel:displayedCard', 'text')">
-                
+        <div data-dojo-type="dijit/_WidgetBase" data-dojo-props="target: at(cardsMain)">
+            <div id="card" data-dojo-type="widgets/Card" 
+                 data-dojo-props="content: at('rel:model.displayedCard', 'text')">
+                <script type="dojo/on" data-dojo-event="click">
+                    cardsMain.control.card.onclick(this);
+                </script>
             </div>
-            <div id="cardCopy" data-dojo-type="widgets/Card" data-dojo-props="content: at('rel:displayedCard', 'text')">
-                
+            <div id="cardCopy" data-dojo-type="widgets/Card" data-dojo-props="content: at('rel:model.displayedCard', 'text') ">
+                <script type="dojo/on" data-dojo-event="click">
+                    cardsMain.control.card.onclick(this);
+                </script>
             </div>
         </div>
 
@@ -25,10 +30,8 @@
         <script type="text/javascript">
             require(["cards/main"], function(CardsMain) {
                 var cardsMain = new CardsMain();
-                this.model = cardsMain.model;
+                this.cardsMain = cardsMain;
                 cardsMain.start(function () {
-                    cardsMain.initCard('#card');
-                    cardsMain.initCard('#cardCopy');
                 })
             });
         </script>
