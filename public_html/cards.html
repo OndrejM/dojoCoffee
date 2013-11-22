@@ -10,8 +10,11 @@
     <body>
         <script type="dojo/require">at: "dojox/mvc/at", dijit: "dijit/registry"</script>
         <div data-dojo-type="dijit/_WidgetBase" data-dojo-props="target: at(cardsMain)">
+            <div id="controllers" data-dojo-type="dijit/_WidgetBase" 
+                 data-dojo-props="card: at('rel:control', 'card')">
+            </div>
             <div id="card" data-dojo-type="widgets/Card" 
-                 data-dojo-props="content: at('rel:model.displayedCard', 'text'), controller: at('rel:control', 'card')">
+                 data-dojo-props="content: at('rel:model.displayedCard', 'text'), controller: at('widget:controllers', 'card')">
                 <script type="dojo/on" data-dojo-event="click">
                     dijit.byNode(this).controller.onclick(this);
                 </script>
