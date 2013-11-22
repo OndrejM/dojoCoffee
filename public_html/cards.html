@@ -8,17 +8,12 @@
 
     </head>
     <body>
-        <script type="dojo/require">at: "dojox/mvc/at"</script>
+        <script type="dojo/require">at: "dojox/mvc/at", dijit: "dijit/registry"</script>
         <div data-dojo-type="dijit/_WidgetBase" data-dojo-props="target: at(cardsMain)">
             <div id="card" data-dojo-type="widgets/Card" 
-                 data-dojo-props="content: at('rel:model.displayedCard', 'text')">
+                 data-dojo-props="content: at('rel:model.displayedCard', 'text'), controller: at('rel:control', 'card')">
                 <script type="dojo/on" data-dojo-event="click">
-                    cardsMain.control.card.onclick(this);
-                </script>
-            </div>
-            <div id="cardCopy" data-dojo-type="widgets/Card" data-dojo-props="content: at('rel:model.displayedCard', 'text') ">
-                <script type="dojo/on" data-dojo-event="click">
-                    cardsMain.control.card.onclick(this);
+                    dijit.byNode(this).controller.onclick(this);
                 </script>
             </div>
         </div>
