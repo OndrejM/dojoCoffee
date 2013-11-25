@@ -2,13 +2,12 @@ define(["dojo/topic","dojox/fx/flip", "dojo/on", "./main", "dojo/when", "dojo/pa
     "dojo/domReady!", "dojo/ready", "widgets/Card"],
         function(topic, fx, on, Main, when, parser, $, $cls) {
             return function() {
-                self = this;
+                var self = this;
                 this.start = start;
 
                 function start(callback) {
                     var main = new Main();
-                    this.model = main.model;
-                    console.log('this', this);
+                    self.model = main.model;
                     when(parser.parse(), function() {
                         console.debug('CardsMain starting');
                         callback();

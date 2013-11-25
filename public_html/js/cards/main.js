@@ -4,7 +4,7 @@ define(["dojo/topic", "dojox/mvc/getStateful", "dojo/Stateful",
 
             return function() {
                 // public
-                self = this;
+                var self = this;
                 self.model = {};
                 self.control = {};
 
@@ -15,14 +15,16 @@ define(["dojo/topic", "dojox/mvc/getStateful", "dojo/Stateful",
                 topic.subscribe("card.turn", self.control.card.onclick);
 
                 function initModel() {
-                    self.model = getStateful({value: 'value1', displayedCard: {text: "Card text"}});
+                    var cardText = "Card text"
+                    self.model = getStateful({value: 'value1', displayedCard: {text: cardText}});
                 }
 
                 function initControllers() {
                     self.control.card = {
                         onclick: function(elem) {
                             console.debug('Card click');
-                            self.model.get('displayedCard').set({text: "Changed card text"});
+                            var prevText = self.model.get('displayedCard').get('text');
+                            self.model.get('displayedCard').set({text: prevText + " Changed card text"});
                         }
                     };
 

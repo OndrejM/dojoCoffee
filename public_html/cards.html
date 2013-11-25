@@ -3,6 +3,7 @@
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="css/main.css" rel="stylesheet" type="text/css"/>
         <link href="css/widgets.css" rel="stylesheet" type="text/css"/>
         <link href="css/cards.css" rel="stylesheet" type="text/css"/>
 
@@ -11,7 +12,7 @@
         <script type="dojo/require">
             at: "dojox/mvc/at", dijit: "dijit/registry", on : "dojo/on"
         </script>
-        <div data-dojo-type="dijit/_WidgetBase" data-dojo-props="target: at(cards)">
+        <div id="content" data-dojo-type="dijit/_WidgetBase" data-dojo-props="target: at(cards)">
             <div id="card" data-dojo-type="widgets/Card" 
                  data-dojo-props="content: at('rel:model.displayedCard', 'text'), 
                     postCreate: cards.card.postCreate">
