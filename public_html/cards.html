@@ -9,32 +9,12 @@
     </head>
     <body>
         <script type="dojo/require">
-            at: "dojox/mvc/at", dijit: "dijit/registry", on : "dojo/on", topic: "dojo/topic",
-            $cls: "dojo/dom-class", fx: "dojox/fx/flip"
+            at: "dojox/mvc/at", dijit: "dijit/registry", on : "dojo/on"
         </script>
-        <div data-dojo-type="dijit/_WidgetBase" data-dojo-props="target: at(cardsMain)">
-            <div id="controllers" data-dojo-type="dijit/_WidgetBase" 
-                 data-dojo-props="card: at('rel:control', 'card')">
-            </div>
+        <div data-dojo-type="dijit/_WidgetBase" data-dojo-props="target: at(cards)">
             <div id="card" data-dojo-type="widgets/Card" 
-                 data-dojo-props="content: at('rel:model.displayedCard', 'text'), controller: at('widget:controllers', 'card')">
-                <script type="dojo/on" data-dojo-event="turn">
-                    topic.publish("card.turn", this);
-                </script>
-                <script type="dojo/on" data-dojo-event="click">
-                    on.emit(this, "turn", {
-                        bubbles: false,
-                        cancelable: false
-                    });
-                </script>
-                <script type="dojo/method" data-dojo-event="postCreate">
-                    var elem = this.domNode;
-                    topic.subscribe("card.turn", function() {
-                        $cls.toggle(elem, "red");
-                        $cls.toggle(elem, "blue");
-                        fx.flip({node: elem}).play();
-                    });
-                </script>
+                 data-dojo-props="content: at('rel:model.displayedCard', 'text'), 
+                    postCreate: cards.card.postCreate">
             </div>
         </div>
 
@@ -43,11 +23,13 @@
         src="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js" type="text/javascript"></script>
 
         <script type="text/javascript">
-            require(["cards/main"], function(CardsMain) {
-            var cardsMain = new CardsMain();
-            this.cardsMain = cardsMain;
-            cardsMain.start(function () {
-            })
+            require(["cards/gui"], function(Gui) {
+                var gui = new Gui();
+                this.cards = gui;
+                gui.start(function () {
+                    console.debug('here');
+                    console.debug(gui.model);
+                });
             });
         </script>
     </body>
