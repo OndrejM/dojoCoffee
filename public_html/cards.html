@@ -8,15 +8,21 @@
 
     </head>
     <body>
-        <script type="dojo/require">at: "dojox/mvc/at", dijit: "dijit/registry"</script>
+        <script type="dojo/require">at: "dojox/mvc/at", dijit: "dijit/registry", on : "dojo/on"</script>
         <div data-dojo-type="dijit/_WidgetBase" data-dojo-props="target: at(cardsMain)">
             <div id="controllers" data-dojo-type="dijit/_WidgetBase" 
                  data-dojo-props="card: at('rel:control', 'card')">
             </div>
             <div id="card" data-dojo-type="widgets/Card" 
                  data-dojo-props="content: at('rel:model.displayedCard', 'text'), controller: at('widget:controllers', 'card')">
-                <script type="dojo/on" data-dojo-event="click">
+                <script type="dojo/on" data-dojo-event="turn">
                     dijit.byNode(this).controller.onclick(this);
+                </script>
+                <script type="dojo/on" data-dojo-event="click">
+                    on.emit(this, "turn", {
+                        bubbles: false,
+                        cancelable: false
+                    });
                 </script>
             </div>
         </div>
@@ -27,10 +33,10 @@
 
         <script type="text/javascript">
             require(["cards/main"], function(CardsMain) {
-                var cardsMain = new CardsMain();
-                this.cardsMain = cardsMain;
-                cardsMain.start(function () {
-                })
+            var cardsMain = new CardsMain();
+            this.cardsMain = cardsMain;
+            cardsMain.start(function () {
+            })
             });
         </script>
     </body>
