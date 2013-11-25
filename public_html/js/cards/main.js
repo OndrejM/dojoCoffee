@@ -23,10 +23,7 @@ function(topic, when, parser, getStateful, Stateful, $, $cls, fx, config) {
             self.control.card = {
                 onclick: function(elem) {
                     console.debug('Card click');
-                    $cls.toggle(elem, "red");
-                    $cls.toggle(elem, "blue");
                     self.model.get('displayedCard').set({text: "Changed card text"});
-                    fx.flip({node: elem}).play();
                 }
             };
             

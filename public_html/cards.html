@@ -8,7 +8,10 @@
 
     </head>
     <body>
-        <script type="dojo/require">at: "dojox/mvc/at", dijit: "dijit/registry", on : "dojo/on", topic: "dojo/topic"</script>
+        <script type="dojo/require">
+            at: "dojox/mvc/at", dijit: "dijit/registry", on : "dojo/on", topic: "dojo/topic",
+            $cls: "dojo/dom-class", fx: "dojox/fx/flip"
+        </script>
         <div data-dojo-type="dijit/_WidgetBase" data-dojo-props="target: at(cardsMain)">
             <div id="controllers" data-dojo-type="dijit/_WidgetBase" 
                  data-dojo-props="card: at('rel:control', 'card')">
@@ -25,7 +28,12 @@
                     });
                 </script>
                 <script type="dojo/method" data-dojo-event="postCreate">
-                    console.debug('Card is created!');
+                    var elem = this.domNode;
+                    topic.subscribe("card.turn", function() {
+                        $cls.toggle(elem, "red");
+                        $cls.toggle(elem, "blue");
+                        fx.flip({node: elem}).play();
+                    });
                 </script>
             </div>
         </div>
