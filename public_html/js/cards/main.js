@@ -1,7 +1,7 @@
-define(["dojo/when", "dojo/parser", "dojox/mvc/getStateful", "dojo/Stateful", "dojo/query", "dojo/dom-class"
+define(["dojo/topic", "dojo/when", "dojo/parser", "dojox/mvc/getStateful", "dojo/Stateful", "dojo/query", "dojo/dom-class"
     , "dojox/fx/flip", "dojo/_base/config"
     , "dojo/domReady!", "dojo/ready", "widgets/Card"], 
-function(when, parser, getStateful, Stateful, $, $cls, fx, config) {
+function(topic, when, parser, getStateful, Stateful, $, $cls, fx, config) {
     
     return function () {
         // public
@@ -29,11 +29,13 @@ function(when, parser, getStateful, Stateful, $, $cls, fx, config) {
                     fx.flip({node: elem}).play();
                 }
             };
+            
         }
         
         function start(callback) {
             when(parser.parse(), function() {
                 console.debug('CardsMain starting');
+                topic.subscribe("card.turn", self.control.card.onclick);
                 callback();
             }, function(err) {
                 console.error(err);

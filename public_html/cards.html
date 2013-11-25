@@ -8,7 +8,7 @@
 
     </head>
     <body>
-        <script type="dojo/require">at: "dojox/mvc/at", dijit: "dijit/registry", on : "dojo/on"</script>
+        <script type="dojo/require">at: "dojox/mvc/at", dijit: "dijit/registry", on : "dojo/on", topic: "dojo/topic"</script>
         <div data-dojo-type="dijit/_WidgetBase" data-dojo-props="target: at(cardsMain)">
             <div id="controllers" data-dojo-type="dijit/_WidgetBase" 
                  data-dojo-props="card: at('rel:control', 'card')">
@@ -16,7 +16,7 @@
             <div id="card" data-dojo-type="widgets/Card" 
                  data-dojo-props="content: at('rel:model.displayedCard', 'text'), controller: at('widget:controllers', 'card')">
                 <script type="dojo/on" data-dojo-event="turn">
-                    dijit.byNode(this).controller.onclick(this);
+                    topic.publish("card.turn", this);
                 </script>
                 <script type="dojo/on" data-dojo-event="click">
                     on.emit(this, "turn", {
