@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Account preferences with Dijit</title>
+        <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css">
+        <link rel="stylesheet" type="text/css" href="//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/resources/dojo.css">
+        <!--includes -->
+        <script src="dojoconfig.js" type="text/javascript"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            require(["app/index", "dijit/layout/TabContainer", "dijit/layout/ContentPane", "dojo/domReady!"]); 
+        </script>
+        <style type="text/css">
+            .formContainer {
+                width: 600px;
+                height: 600px;
+            }
+            label {
+                width: 150px;
+                float:left;
+            }
+        </style>
+    </head>
+    <body class="tundra">
+        <div id="feedback" style="font-size: 42pt; background-color: yellow;"></div>
+
+        <!-- body -->
+    
+        <div class="formContainer" data-dojo-type="dijit.layout.TabContainer">
+            <div data-dojo-type="dijit.layout.ContentPane" title="Personal Data">
+                <label>First name<input type="text" size="30" name="first_name" id="first_name"/></label>
+                <label>Last name<input type="text" size="30" name="last_name" id="last_name"/></label>
+            </div>
+            <div data-dojo-type="dijit.layout.ContentPane" title="Address">
+                <label>Street<input type="text" size="30" name="street" id="street"/></label>
+                <label>City<input type="text" size="30" name="city" id="city"/></label>
+            </div>
+        </div>        
+    </body>
+</html>
