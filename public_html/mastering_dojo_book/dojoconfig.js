@@ -1,5 +1,6 @@
 (function(global) {
     global.dojoConfig = {
+        isDebug: true,
         parseOnLoad: true,
         async: 1,
         packages: [
