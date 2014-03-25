@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Dojo coffee</title>
+        <title>Dojo tests</title>
         <!--includes -->
         <script src="dojoconfig.js" type="text/javascript"></script>
         <script 
@@ -10,8 +10,14 @@
 
         <!-- body -->
         <script type="text/javascript">
-            require(["cs!app/index"], function(){
-                require(["app/index"]); 
+            // define module on the fly - works with dojo
+            define(function() {
+                return "Test module";
+            }); 
+            
+            require(["test/module", "dojoConfig"], function(testModule, dojoConfig) {
+               console.log(testModule); 
+               console.log(dojoConfig);
             });
         </script>
     </body>

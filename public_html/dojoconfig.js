@@ -14,11 +14,22 @@
             },{
                 name: 'widgets/common',
                 location: localBase() + 'js/widgets/common'
+            },{
+                name: 'coffee',
+                location: 'https://cdnjs.cloudflare.com/ajax/libs/coffee-script/1.7.1/'
             }
+        ],
+        aliases:[
+            ['coffee/coffee-script','coffee/coffee-script.min'],
+            ['cs', 'app/cs'],
+            ['dojoConfig', 'dojo/_base/config']
         ],
         'environment': 'dev',
         isDev : function() {
             return this.environment === "dev";
+        },
+        cs : {
+            loadAsJS : true
         }
     };
 

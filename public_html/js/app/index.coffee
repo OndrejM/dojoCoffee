@@ -1,2 +1,6 @@
 define ["./snippets/demo"], (dep) -> 
-  alert "loaded, " + dep
+  #alert "loaded template: " + template
+  msg = "dojo coffee loaded!"
+  console.log msg
+  msg
+  
