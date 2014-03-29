@@ -6,6 +6,9 @@
                 name: 'app',
                 location: localBase() + 'js/app'
             },{
+                name: 'lib',
+                location: localBase() + 'js/lib'
+            },{
                 name: 'cards',
                 location: localBase() + 'js/cards'
             },{

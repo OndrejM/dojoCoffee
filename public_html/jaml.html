@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>JAML tests</title>
+        <meta charset="UTF-8">
+        <script src="https://rawgithub.com/edspencer/jaml/master/Jaml-all.js"></script>
+    </head>
+    <body>
+        <script type="text/javascript">
+            Jaml.register('simple', function() {
+  div(
+    h1("Some title"),
+    p("Some exciting paragraph text"),
+    br(),
+
+    ul(
+      li("First item"),
+      li("Second item"),
+      li("Third item")
+    )
+  );
+  div();
+});
+
+        console.log(Jaml.render('simple'));
+        </script>
+    </body>
+</html>
